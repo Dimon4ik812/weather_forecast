@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>История посещений</title>
+</head>
+<body>
+{% block title %}История посещений{% endblock %}
+{% block content %}
+<h1>История посещений</h1>
+
+{% if history %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Город</th>
+      <th>Количество просмотров</th>
+      <th>Последний просмотр</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in history %}
+    <tr>
+      <td>{{ item.city_name }}</td>
+      <td>{{ item.search_count }}</td>
+      <td>{{ item.last_searched }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>История посещений пуста.</p>
+{% endif %}
+{% endblock %}
+</body>
+</html>
